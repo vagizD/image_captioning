@@ -70,11 +70,11 @@ def generate(
 
 
 def run(model, image_path):
-    image = cv2.imread(image_path)[:, :, ::-1]
+    image = cv2.imread(image_path)
 
     tokens, text = generate(
         model,
         image,
         greedy=True
     )
-    return image, text
+    return image, text[4:-5]
