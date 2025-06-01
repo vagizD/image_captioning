@@ -147,10 +147,10 @@ class image_captioning_model(nn.Module):
         return logits
 
 
-def get_model(unzip_root: str, model_name):
+def get_model(unzip_root: str, model_name: str, device):
     # model_name = "en3FR_rnn2_aug1_ncap1#0_weights"
     # checkpoint = torch.load(os.path.join(unzip_root, f"{model_name}.pt"), weights_only=True)
-    checkpoint = torch.load(os.path.join(unzip_root, f"{model_name}.pt"))
+    checkpoint = torch.load(os.path.join(unzip_root, f"{model_name}.pt"), map_location=device)
 
     model = image_captioning_model(**init_kwargs)
 

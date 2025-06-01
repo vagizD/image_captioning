@@ -29,9 +29,7 @@ def load_image(path):
 
 @st.cache_resource
 def load_model(model_name):
-    model = get_model("chkp", model_name)
-    # checkpoint = torch.load(os.path.join("./chkp", f"{model_name}.pt"), map_location=DEVICE)
-    # model.load_state_dict(checkpoint['model_state_dict'])
+    model = get_model("chkp", model_name, DEVICE)
     model = model.to(DEVICE)
     model.eval()
     return model
